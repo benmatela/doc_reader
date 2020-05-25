@@ -1,11 +1,3 @@
-// .table-banner-up {
-//     background: url('../../../assets/svg/news_pink.svg');
-//     background-position: center center;
-//     background-repeat: no-repeat;
-//     opacity: 0.90;
-//     background-size: cover;
-// }
-
 .small-card {
     min-height: 130px;
     max-height: 130px;
@@ -19,8 +11,25 @@
     width: auto;
 }
 
-.card-max-height {
+.main-card-max-height {
     min-height: 100vh;
     max-height: 100vh;
 }
+
+.info-container {
+    min-height: 50vh;
+    max-height: 50vh;
+}
+
+.img-opacity-80 {
+    opacity: 0.80;
+}
+.intro-banner {
+    background: url('../assets/illustrations/developer_activity.svg');
+    // background-position: center center;
+    background-repeat: no-repeat;
+    opacity: 0.80;
+    background-size: cover;
+}
+
 
