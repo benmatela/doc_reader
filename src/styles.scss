@@ -13,3 +13,11 @@
 .roboto {
     font-family: 'Roboto';
 }
+
+html, body {
+    overflow-x: hidden;
+}
+
+body {
+    position: relative;
+}

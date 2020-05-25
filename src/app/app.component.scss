@@ -7,8 +7,6 @@
 
 .flex-card {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    height: auto;
-    width: auto;
 }
 
 .main-card-max-height {
@@ -17,19 +15,40 @@
 }
 
 .info-container {
-    min-height: 50vh;
-    max-height: 50vh;
+    min-height: 40vh;
 }
 
 .img-opacity-80 {
     opacity: 0.80;
 }
+
 .intro-banner {
     background: url('../assets/illustrations/developer_activity.svg');
     // background-position: center center;
     background-repeat: no-repeat;
     opacity: 0.80;
     background-size: cover;
+    min-height: 300px;
 }
+
+.stack-banner {
+    background: url('../assets/illustrations/code_review.svg');
+    // background-position: center center;
+    background-repeat: no-repeat;
+    opacity: 0.80;
+    background-size: cover;
+    min-height: 300px;
+}
+
+.scroll {
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.pdf-viewer {
+    display: block;
+    height: 100vh;
+}
+
 
 
