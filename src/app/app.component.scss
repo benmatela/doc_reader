@@ -22,24 +22,6 @@
     opacity: 0.80;
 }
 
-.intro-banner {
-    background: url('../assets/illustrations/developer_activity.svg');
-    // background-position: center center;
-    background-repeat: no-repeat;
-    opacity: 0.80;
-    background-size: cover;
-    min-height: 300px;
-}
-
-.stack-banner {
-    background: url('../assets/illustrations/code_review.svg');
-    // background-position: center center;
-    background-repeat: no-repeat;
-    opacity: 0.80;
-    background-size: cover;
-    min-height: 300px;
-}
-
 .scroll {
     overflow-x: hidden;
     overflow-y: scroll;
@@ -50,5 +32,12 @@
     height: 100vh;
 }
 
+.reader-container {
+    height: 600px;
+    background-color: #D3D3D3;
+}
 
+.bg-light-gray {
+    background-color: #D3D3D3;
+}
 
