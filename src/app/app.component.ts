@@ -1,8 +1,6 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import * as jspdf from 'jspdf';
 import html2canvas from 'html2canvas';
-
-// import { faSave } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-root',
@@ -17,20 +15,11 @@ export class AppComponent implements OnInit {
   isDownloading: boolean = false;
   notes: string = '';
   selectedBook: any;
+  dailyQuote: string =  "People often say that motivation doesn't last. Well, neither does bathing - that's why we recommend it daily.";
   books = [
     { id: 0, name: 'PDF info and test file', pages: 3, imgUrl: '../assets/illustrations/remotely.svg', link: 'https://vadimdez.github.io/ng2-pdf-viewer/assets/pdf-test.pdf' },
     { id: 0, name: 'PDF info and test file V2', pages: 3, imgUrl: '../assets/illustrations/programming.svg', link: 'https://vadimdez.github.io/ng2-pdf-viewer/assets/pdf-test.pdf' }
   ];
-
-  @HostListener('window:scroll', ['$event'])
-  onWindowScroll(event) {
-    // 200 is the height from bottom from where you want to trigger the infintie scroll, can we zero to detect bottom of window
-    if ((document.body.clientHeight + window.scrollY + 200) >= document.body.scrollHeight) {
-        console.log('tiggred');
-    }
-  }
-
-  // saveIcon = faSave;
 
   constructor() {
   }
@@ -46,6 +35,10 @@ export class AppComponent implements OnInit {
 
   onCloseBook() {
     this.isReaderMode = false;
+  }
+
+  onClearTextArea() {
+    this.notes = '';
   }
 
   afterLoadComplete(pdfData: any) {

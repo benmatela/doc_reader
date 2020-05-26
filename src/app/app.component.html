@@ -24,14 +24,21 @@
         </button>
         <hr>
         <div id="contentToConvert" class="text-center text-sm-left">
-          <textarea placeholder="Notes" rows="10" [disabled]="!isReaderMode" class="form-control" [(ngModel)]="notes"></textarea>
+          <textarea placeholder="Notes" rows="10" [disabled]="!isReaderMode" class="form-control"
+            [(ngModel)]="notes"></textarea>
         </div>
-        <button class="btn btn-success btn-sm col-12" *ngIf="isReaderMode" [disabled]="notes.length === 0 || !isReaderMode"
-        (click)="downloadPDF()"><i class="fa fa-download"></i> Get As PDF</button>
+        <ng-container #sideButtons *ngIf="isReaderMode">
+          <button class="btn btn-warning btn-sm col-12 mt-1" [disabled]="notes.length === 0 || !isReaderMode"
+            (click)="onClearTextArea()"><i class="fa fa-eraser"></i> Clear</button>
+          <button class="btn btn-success btn-sm col-12 mt-1" [disabled]="notes.length === 0 || !isReaderMode"
+            (click)="downloadPDF()"><i class="fa fa-download"></i> Get As PDF</button>
+        </ng-container>
       </div>
-      <div *ngIf="!isReaderMode">
-        <p class="font-weight-bold text-center">Daily Quote:</p>
-        <p class="cursive">"People often say that motivation doesn't last. Well, neither does bathing - that's why we recommend it daily."</p>
+      <div *ngIf="!isReaderMode" class="text-center">
+        <small class="font-weight-bold cursive">
+          Daily Quote:<br>
+         {{dailyQuote}}
+        </small>
         <hr>
       </div>
     </div>
@@ -54,7 +61,7 @@
 
 <ng-template #docListView>
   <div class="row m-3">
-    <div class="card col-4 book-container m-2" (click)="onReadBook(book)"  *ngFor="let book of books">
+    <div class="card col-4 book-container m-2" (click)="onReadBook(book)" *ngFor="let book of books">
       <p class="text-center font-weight-bold mt-1"><i class="fa fa-book"></i> {{book.name}}</p>
       <div class="border">
         <img src="{{book.imgUrl}}" height="150px" width="150px">
