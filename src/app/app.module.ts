@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TopNavComponent } from './top-nav/top-nav.component';
 import { PdfViewerModule } from 'ng2-pdf-viewer'; 
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    PdfViewerModule
+    PdfViewerModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
