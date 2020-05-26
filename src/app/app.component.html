@@ -1,6 +1,7 @@
 <div class="container-fluid montserrat">
   <!-- <app-top-nav></app-top-nav> -->
   <div class="row">
+
     <div class="card col-lg-2 col-sm-12">
       <h5 class="text-center font-weight-bold mt-3">Doc Reader</h5>
       <div class="text-center mt-2">
@@ -9,37 +10,57 @@
         <p>📧 user@gmail.com</p>
       </div>
       <hr>
-      <div *ngIf="isLoaded" class="text-center">
-        <button class="btn btn-outline-default" (click)="prevPage()" [disabled]="page === 1"><i
-            class="fa fa-arrow-left animate__bounce"></i></button>
+      <div *ngIf="isReaderMode" class="text-center">
+        <button class="btn btn-outline-default" (click)="prevPage()" [disabled]="page === 1">
+          <i class="fa fa-arrow-left animate__bounce"></i>
+        </button>
         &nbsp;<span>{{ page }} / {{ totalPages }}</span>&nbsp;
-        <button class="btn btn-outline-default" (click)="nextPage()" [disabled]="page === totalPages"><i
-            class="fa fa-arrow-right animate__bounce"></i></button>
+        <button class="btn btn-outline-default" (click)="nextPage()" [disabled]="page === totalPages">
+          <i class="fa fa-arrow-right animate__bounce"></i>
+        </button>
+        <br>
+        <button class="btn btn-default mt-2" (click)="onCloseBook()">
+          <i class="fa fa-close"></i> Close Book
+        </button>
+        <hr>
+        <div id="contentToConvert" class="text-center text-sm-left">
+          <textarea placeholder="Notes" rows="10" [disabled]="!isReaderMode" class="form-control" [(ngModel)]="notes"></textarea>
+        </div>
+        <button class="btn btn-success btn-sm col-12" *ngIf="isReaderMode" [disabled]="notes.length === 0 || !isReaderMode"
+        (click)="downloadPDF()"><i class="fa fa-download"></i> Get As PDF</button>
       </div>
-      <hr>
-      <div id="contentToConvert"  class="text-center text-sm-left">
-        <textarea placeholder="Notes" rows="10" [disabled]="!isReaderMode" class="form-control" [(ngModel)]="notes"></textarea>
+      <div *ngIf="!isReaderMode">
+        <p class="font-weight-bold text-center">Daily Quote:</p>
+        <p class="cursive">"People often say that motivation doesn't last. Well, neither does bathing - that's why we recommend it daily."</p>
+        <hr>
       </div>
-      <button class="btn btn-success btn-sm" [disabled]="notes.length === 0 || !isReaderMode" (click)="downloadPDF()"><i
-          class="fa fa-download"></i> Get As PDF</button>
     </div>
+
     <div class="card col-lg-10 col-sm-12 main-card-max-height reader-container">
       <ng-container *ngIf="isReaderMode;then readerView else docListView"></ng-container>
     </div>
+
   </div>
 </div>
 
 <ng-template #readerView>
   <div class="scroll container flex-card bg-light mt-3">
     <div class="pdf-container">
-      <pdf-viewer [src]="src" [original-size]="false" [show-all]="false" [page]="page"
+      <pdf-viewer [src]="selectedBook.link" [original-size]="false" [show-all]="false" [page]="page"
         (after-load-complete)="afterLoadComplete($event)"></pdf-viewer>
     </div>
   </div>
 </ng-template>
 
 <ng-template #docListView>
-  <div class="row">
-    
+  <div class="row m-3">
+    <div class="card col-4 book-container m-2" (click)="onReadBook(book)"  *ngFor="let book of books">
+      <p class="text-center font-weight-bold mt-1"><i class="fa fa-book"></i> {{book.name}}</p>
+      <div class="border">
+        <img src="{{book.imgUrl}}" height="150px" width="150px">
+      </div>
+      <p class="mt-1">PAGES: {{book.pages}}</p>
+      <p><small>LINK: {{book.link}}</small></p>
+    </div>
   </div>
 </ng-template>

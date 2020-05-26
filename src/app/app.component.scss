@@ -41,3 +41,15 @@
     background-color: #D3D3D3;
 }
 
+.book-container {
+    min-height: 300px;
+}
+
+.book-container:hover {
+    cursor: pointer;
+    border: solid 1px #00BFA6;
+}
+
+.cursive {
+    font-family: cursive;
+}
