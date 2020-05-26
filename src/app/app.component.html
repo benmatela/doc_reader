@@ -4,28 +4,42 @@
     <div class="card col-lg-2 col-sm-12">
       <h5 class="text-center font-weight-bold mt-3">Doc Reader</h5>
       <div class="text-center mt-2">
-        <img src="../assets/illustrations/profile_pic.svg" class="rounded-circle" alt="Profile Pic" height="150" width="150">
-        <p>user@gmail.com</p>
+        <img src="../assets/illustrations/profile_pic.svg" class="rounded-circle" alt="Profile Pic" height="150"
+          width="150">
+        <p>📧 user@gmail.com</p>
       </div>
       <hr>
       <div *ngIf="isLoaded" class="text-center">
-        <button class="btn btn-outline-default" (click)="prevPage()" [disabled]="page === 1"> < Prev</button>
+        <button class="btn btn-outline-default" (click)="prevPage()" [disabled]="page === 1"><i
+            class="fa fa-arrow-left animate__bounce"></i></button>
         &nbsp;<span>{{ page }} / {{ totalPages }}</span>&nbsp;
-        <button class="btn btn-outline-default" (click)="nextPage()" [disabled]="page === totalPages">Next ></button>
+        <button class="btn btn-outline-default" (click)="nextPage()" [disabled]="page === totalPages"><i
+            class="fa fa-arrow-right animate__bounce"></i></button>
       </div>
       <hr>
-      <div id="contentToConvert" class="text-center text-sm-left">
-        <textarea placeholder="Notes" rows="10" class="form-control" [(ngModel)]="notes"></textarea>
+      <div id="contentToConvert"  class="text-center text-sm-left">
+        <textarea placeholder="Notes" rows="10" [disabled]="!isReaderMode" class="form-control" [(ngModel)]="notes"></textarea>
       </div>
-      <button class="btn btn-success btn-sm" [disabled]="notes.length === 0" (click)="downloadPDF()">Get As PDF</button>
+      <button class="btn btn-success btn-sm" [disabled]="notes.length === 0 || !isReaderMode" (click)="downloadPDF()"><i
+          class="fa fa-download"></i> Get As PDF</button>
     </div>
     <div class="card col-lg-10 col-sm-12 main-card-max-height reader-container">
-      <div class="scroll container flex-card bg-light mt-3">
-        <div class="pdf-container">
-          <pdf-viewer [src]="src" [original-size]="false" [show-all]="false" [page]="page"
-            (after-load-complete)="afterLoadComplete($event)"></pdf-viewer>
-        </div>
-      </div>
+      <ng-container *ngIf="isReaderMode;then readerView else docListView"></ng-container>
     </div>
   </div>
 </div>
+
+<ng-template #readerView>
+  <div class="scroll container flex-card bg-light mt-3">
+    <div class="pdf-container">
+      <pdf-viewer [src]="src" [original-size]="false" [show-all]="false" [page]="page"
+        (after-load-complete)="afterLoadComplete($event)"></pdf-viewer>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #docListView>
+  <div class="row">
+    
+  </div>
+</ng-template>
