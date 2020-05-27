@@ -8,11 +8,13 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
 
 import { AppComponent } from './app.component';
 import { TopNavComponent } from './top-nav/top-nav.component';
+import { BigNumberPipe } from './pipes/big-number.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     TopNavComponent,
+    BigNumberPipe,
   ],
   imports: [
     BrowserModule,

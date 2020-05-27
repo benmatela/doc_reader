@@ -5,7 +5,7 @@
     <div class="card col-lg-2 col-sm-12">
       <h5 class="text-center font-weight-bold mt-3">Doc Reader</h5>
       <div class="text-center mt-2">
-        <img src="../assets/illustrations/profile_pic.svg" class="rounded-circle" alt="Profile Pic" height="150"
+        <img src="{{profilePic}}" class="rounded-circle" alt="Profile Pic" height="150"
           width="150">
         <p>📧 user@gmail.com</p>
       </div>
@@ -61,12 +61,13 @@
 
 <ng-template #docListView>
   <div class="row m-3">
-    <div class="card col-4 book-container m-2" (click)="onReadBook(book)" *ngFor="let book of books">
+    <div class="card col-4 book-container m-2 flex-card" (click)="onReadBook(book)" *ngFor="let book of books">
       <p class="text-center font-weight-bold mt-1"><i class="fa fa-book"></i> {{book.name}}</p>
       <div class="border">
         <img src="{{book.imgUrl}}" height="150px" width="150px">
       </div>
       <p class="mt-1">PAGES: {{book.pages}}</p>
+      <p>READERS: {{book.readers | bigNumber}}</p>
       <p><small>LINK: {{book.link}}</small></p>
     </div>
   </div>

@@ -15,10 +15,11 @@ export class AppComponent implements OnInit {
   isDownloading: boolean = false;
   notes: string = '';
   selectedBook: any;
+  profilePic: string = '../assets/illustrations/profile_pic.svg';
   dailyQuote: string =  "People often say that motivation doesn't last. Well, neither does bathing - that's why we recommend it daily.";
   books = [
-    { id: 0, name: 'PDF info and test file', pages: 3, imgUrl: '../assets/illustrations/remotely.svg', link: 'https://vadimdez.github.io/ng2-pdf-viewer/assets/pdf-test.pdf' },
-    { id: 0, name: 'PDF info and test file V2', pages: 3, imgUrl: '../assets/illustrations/programming.svg', link: 'https://vadimdez.github.io/ng2-pdf-viewer/assets/pdf-test.pdf' }
+    { id: 0, name: 'PDF info and test file', readers: 1000, pages: 3, imgUrl: '../assets/illustrations/remotely.svg', link: 'https://vadimdez.github.io/ng2-pdf-viewer/assets/pdf-test.pdf' },
+    { id: 0, name: 'PDF info and test file V2', readers: 10000334, pages: 3, imgUrl: '../assets/illustrations/programming.svg', link: 'https://vadimdez.github.io/ng2-pdf-viewer/assets/pdf-test.pdf' }
   ];
 
   constructor() {
